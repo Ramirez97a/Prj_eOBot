@@ -1,0 +1,12 @@
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\Prj_AplicationCore.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\Prj_AplicationCore.pdb
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\Prj_Infraestructure.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\Prj_Infraestructure.pdb
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\Prj_Infraestructure.dll.config
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\obj\Debug\Prj_AplicationCore.csproj.AssemblyReference.cache
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\obj\Debug\Prj_AplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\obj\Debug\Prj_Apli.D805E81F.Up2Date
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\obj\Debug\Prj_AplicationCore.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_AplicationCore\obj\Debug\Prj_AplicationCore.pdb

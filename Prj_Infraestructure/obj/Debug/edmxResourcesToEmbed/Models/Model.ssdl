@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sinertica_RLRobotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Rl_Robot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserWeb" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordWeb" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginUrl" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="NodeName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TimeGenReports" Type="datetime" Nullable="false" />
+    <Property Name="TimeDownReports" Type="datetime" Nullable="false" />
+    <Property Name="Timespan" Type="int" Nullable="false" />
+    <Property Name="LocalFolder" Type="varchar" MaxLength="512" Nullable="false" />
+    <Property Name="Message" Type="varchar" MaxLength="80" />
+    <Property Name="StatusClient" Type="int" />
+    <Property Name="CodError" Type="int" />
+    <Property Name="CodRequest" Type="int" />
+    <Property Name="DateSubscribe" Type="date" />
+    <Property Name="FechaHoraUltimoReporte" Type="datetime" />
+    <Property Name="EmailNotificaciones" Type="varchar" MaxLength="100" />
+    <Property Name="Token" Type="varchar" MaxLength="600" />
+  </EntityType>
+  <EntityType Name="RI_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RI_Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Role" Type="int" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <Association Name="FK_RI_Users_RI_Users">
+    <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />
+    <End Role="RI_Users" Type="Self.RI_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RI_Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RI_Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sinertica_RLRobotModelStoreContainer">
+    <EntitySet Name="Rl_Robot" EntityType="Self.Rl_Robot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RI_Role" EntityType="Self.RI_Role" Schema="dev_sinertica" store:Type="Tables" />
+    <EntitySet Name="RI_Users" EntityType="Self.RI_Users" Schema="dev_sinertica" store:Type="Tables" />
+    <AssociationSet Name="FK_RI_Users_RI_Users" Association="Self.FK_RI_Users_RI_Users">
+      <End Role="RI_Role" EntitySet="RI_Role" />
+      <End Role="RI_Users" EntitySet="RI_Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

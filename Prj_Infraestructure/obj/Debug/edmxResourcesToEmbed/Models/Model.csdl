@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sinertica_RLRobotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Rl_Robot">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="UserWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PasswordWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NodeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TimeGenReports" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TimeDownReports" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Timespan" Type="Int32" Nullable="false" />
+    <Property Name="LocalFolder" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Message" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="StatusClient" Type="Int32" />
+    <Property Name="CodError" Type="Int32" />
+    <Property Name="CodRequest" Type="Int32" />
+    <Property Name="DateSubscribe" Type="DateTime" Precision="0" />
+    <Property Name="FechaHoraUltimoReporte" Type="DateTime" Precision="3" />
+    <Property Name="EmailNotificaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Token" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RI_Role">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="RI_Users" Relationship="Self.FK_RI_Users_RI_Users" FromRole="RI_Role" ToRole="RI_Users" />
+  </EntityType>
+  <EntityType Name="RI_Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="RI_Role" Relationship="Self.FK_RI_Users_RI_Users" FromRole="RI_Users" ToRole="RI_Role" />
+  </EntityType>
+  <Association Name="FK_RI_Users_RI_Users">
+    <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />
+    <End Role="RI_Users" Type="Self.RI_Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RI_Role">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RI_Users">
+        <PropertyRef Name="Role" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sinertica_RLRobotEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Rl_Robot" EntityType="Self.Rl_Robot" />
+    <EntitySet Name="RI_Role" EntityType="Self.RI_Role" />
+    <EntitySet Name="RI_Users" EntityType="Self.RI_Users" />
+    <AssociationSet Name="FK_RI_Users_RI_Users" Association="Self.FK_RI_Users_RI_Users">
+      <End Role="RI_Role" EntitySet="RI_Role" />
+      <End Role="RI_Users" EntitySet="RI_Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

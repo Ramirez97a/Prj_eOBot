@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sinertica_RLRobotModelStoreContainer" CdmEntityContainer="sinertica_RLRobotEntities">
+    <EntitySetMapping Name="Rl_Robot">
+      <EntityTypeMapping TypeName="sinertica_RLRobotModel.Rl_Robot">
+        <MappingFragment StoreEntitySet="Rl_Robot">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserWeb" ColumnName="UserWeb" />
+          <ScalarProperty Name="PasswordWeb" ColumnName="PasswordWeb" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginUrl" ColumnName="LoginUrl" />
+          <ScalarProperty Name="NodeName" ColumnName="NodeName" />
+          <ScalarProperty Name="TimeGenReports" ColumnName="TimeGenReports" />
+          <ScalarProperty Name="TimeDownReports" ColumnName="TimeDownReports" />
+          <ScalarProperty Name="Timespan" ColumnName="Timespan" />
+          <ScalarProperty Name="LocalFolder" ColumnName="LocalFolder" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="StatusClient" ColumnName="StatusClient" />
+          <ScalarProperty Name="CodError" ColumnName="CodError" />
+          <ScalarProperty Name="CodRequest" ColumnName="CodRequest" />
+          <ScalarProperty Name="DateSubscribe" ColumnName="DateSubscribe" />
+          <ScalarProperty Name="FechaHoraUltimoReporte" ColumnName="FechaHoraUltimoReporte" />
+          <ScalarProperty Name="EmailNotificaciones" ColumnName="EmailNotificaciones" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RI_Role">
+      <EntityTypeMapping TypeName="sinertica_RLRobotModel.RI_Role">
+        <MappingFragment StoreEntitySet="RI_Role">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RI_Users">
+      <EntityTypeMapping TypeName="sinertica_RLRobotModel.RI_Users">
+        <MappingFragment StoreEntitySet="RI_Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
