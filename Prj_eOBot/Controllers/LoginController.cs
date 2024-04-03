@@ -37,9 +37,8 @@ namespace Prj_eOBot.Controllers
                 else
                 {
                     response.StatusCode = (int)HttpStatusCode.OK;
-                    response.Message = "Usuario autorizado";
-                    response.userId = Users.ID;
-                    Session["User"] = Users;
+                    response.Message = "Usuario autorizado";                   
+                   
                 }
 
                 return Json(response);

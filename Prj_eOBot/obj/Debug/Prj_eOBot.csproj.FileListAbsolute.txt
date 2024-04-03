@@ -51,9 +51,13 @@ C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\roslyn\vbc.
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\roslyn\VBCSCompiler.exe
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Antlr3.Runtime.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.SqlServer.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Newtonsoft.Json.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_AplicationCore.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Helpers.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Mvc.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Optimization.dll
@@ -62,6 +66,11 @@ C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.WebPages.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.WebPages.Razor.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\WebGrease.dll
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_AplicationCore.pdb
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.pdb
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.dll.config
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.xml
+C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.SqlServer.xml
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Helpers.xml
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Mvc.xml
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\System.Web.Optimization.xml
@@ -84,10 +93,3 @@ C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\obj\Debug\Prj_e
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\obj\Debug\Prj_eOBot.csproj.Up2Date
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\obj\Debug\Prj_eOBot.dll
 C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\obj\Debug\Prj_eOBot.pdb
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_AplicationCore.dll
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.dll
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.dll
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_AplicationCore.pdb
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.pdb
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\Prj_Infraestructure.dll.config
-C:\Users\ricar\OneDrive\Documentos\Sinertica\Prj_eOBot\Prj_eOBot\bin\EntityFramework.xml

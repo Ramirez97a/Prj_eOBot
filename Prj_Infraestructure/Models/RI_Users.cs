@@ -14,7 +14,7 @@ namespace Prj_Infraestructure.Models
     
     public partial class RI_Users
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }

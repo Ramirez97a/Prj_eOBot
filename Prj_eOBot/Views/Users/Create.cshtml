@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+}
+
+<div class="container">
+
+    <div class="row" id="cancel-row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
+            <div class="widget">
+                <div class="widget-heading mt-2">
+                    <h4 style="padding-bottom: 15px; text-align:center" class="font-weight-450 mb-0">Registro Usuarios</h4>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group row mb-2">
+                        <label for="TematicaID" class="control-label col-md-2">Nombre</label>
+                        <div class="col-md-10">
+                            <input type="text" id="nombre" name="nombre" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="TematicaID" class="control-label col-md-2">Apellidos</label>
+                        <div class="col-md-10">
+                            <input type="text" id="apellidos" name="apellidos" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="AceptoTerminos" class="control-label col-md-2">Email</label>
+                        <div class="col-md-10">
+                            <input type="text" id="email" name="email" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="AceptoTerminos" class="control-label col-md-2">Nombre usuario</label>
+                        <div class="col-md-10">
+                            <input type="text" id="username" name="username" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-2">
+                        <label for="AceptoTerminos" class="control-label col-md-2">Contraseña</label>
+                        <div class="col-md-10">
+                            <input type="text" id="password" name="password" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="conteinerTematicaPadre">
+                        <label for="TematicaID" class="control-label col-md-2">Role</label>
+                        <div class="col-md-10">
+                            <select class="form-select" aria-label="Default select example" id="roleSelect">
+                                <option selected>Seleccione un role</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Usuario</option>                               
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+            </div> 
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-12" style="text-align:right; display:block;">
+                    <input type="submit" value="Crear" id="btnCrear" class="btn" style="background-color:#147A55; color:white" />
+                    <a class="btn" style="background-color:#D8431D; color:white;" type="button" href="/Users/Index">Regresar</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   
+    <script>
+        $(document).ready(function () {          
+
+
+            $('#btnCrear').click(function (e) {
+                e.preventDefault();
+                var selectedRole = $('#roleSelect').val();
+                if (selectedRole == null || selectedRole === "") {
+                    alert("Por favor, seleccione un rol.");
+                    return false; // Evita que el formulario se envíe si no se ha seleccionado un rol
+                }
+                else {
+                    guardarDatos();
+                }
+             
+            });
+
+            function guardarDatos() {              
+                var nombre = $('#nombre').val();
+                var apellidos = $('#apellidos').val();
+                var email = $('#email').val();
+                var username = $('#username').val();
+                var password = $('#password').val();
+                var role = $('#roleSelect').val();
+                var id = null;
+                
+                var data = {
+                    ID: id,
+                    Name: nombre,
+                    Surname: apellidos,
+                    Email: email,
+                    UserName: username,
+                    Password: password,
+                    Role: role,                    
+                };
+               
+                $.ajax({
+                    type: "POST",
+                    url: "/Users/Save",
+                    data: JSON.stringify(data),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+
+                        if (response.success) {
+                            window.location.href = "/Users/Index";
+                        } else {
+                            alert("Error al guardar el registro: " + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+
+
+        });
+
+    </script>
+}
+

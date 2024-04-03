@@ -21,5 +21,22 @@ namespace Prj_AplicationCore
             //string codifiedPass = Security.EncrypthAES(userPassword);
             return await repository.Login(usermail, userPassword);
         }
+        
+        public IEnumerable<RI_Users> GetUsers()
+        {
+            return repository.getUsers();
+        }
+        public RI_Users Save(RI_Users ri_Users)
+        {
+            return repository.Save(ri_Users);
+        }
+        public RI_Users GetUserById(int id)
+        {
+            return repository.GetUserById(id);
+        }
+        public void Delete(int id)
+        {
+            repository.Delete(id);
+        }
     }
 }
