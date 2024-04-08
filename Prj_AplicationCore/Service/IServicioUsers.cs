@@ -11,9 +11,9 @@ namespace Prj_AplicationCore
     public interface IServicioUsers
     {
         Task<RI_Users> Login(string usermail, string userPassword);        
-        IEnumerable<RI_Users> GetUsers();
-        RI_Users Save(RI_Users ri_Users);
-        RI_Users GetUserById(int id);
-        void Delete(int id);
+        Task<IEnumerable<RI_Users>> GetUsersAsync();
+        Task<RI_Users> SaveAsync(RI_Users ri_Users);
+        Task<RI_Users> GetUserByIdAsync(int id);
+        Task DeleteAsync(int id);
     }
 }

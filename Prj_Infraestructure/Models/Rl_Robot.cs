@@ -27,8 +27,8 @@ namespace Prj_Infraestructure.Models
         public string LocalFolder { get; set; }
         public string Message { get; set; }
         public Nullable<int> StatusClient { get; set; }
-        public Nullable<int> CodError { get; set; }
-        public Nullable<int> CodRequest { get; set; }
+        public int? CodError { get; set; }
+        public int? CodRequest { get; set; }
         public Nullable<System.DateTime> DateSubscribe { get; set; }
         public Nullable<System.DateTime> FechaHoraUltimoReporte { get; set; }
         public string EmailNotificaciones { get; set; }

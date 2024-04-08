@@ -11,10 +11,10 @@ namespace prj_Infraestructure.Repositorys
     public interface  IRepositoryUsers
     {
         Task<RI_Users> Login(string userName, string userPassword);
-        IEnumerable<RI_Users> getUsers();
-        RI_Users Save(RI_Users ri_Users);
-        RI_Users GetUserById(int? id);
-        void Delete(int id);
+        Task<IEnumerable<RI_Users>> GetUsersAsync();
+        Task<RI_Users> SaveAsync(RI_Users ri_Users);
+        Task<RI_Users> GetUserByIdAsync(int? id);
+        Task DeleteAsync(int id);
 
     }
 }

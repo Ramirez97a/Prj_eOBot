@@ -21,22 +21,27 @@ namespace Prj_AplicationCore
             //string codifiedPass = Security.EncrypthAES(userPassword);
             return await repository.Login(usermail, userPassword);
         }
-        
-        public IEnumerable<RI_Users> GetUsers()
+
+        public async Task<IEnumerable<RI_Users>> GetUsersAsync()
         {
-            return repository.getUsers();
+            return await repository.GetUsersAsync();
         }
-        public RI_Users Save(RI_Users ri_Users)
+
+        public async Task<RI_Users> SaveAsync(RI_Users ri_Users)
         {
-            return repository.Save(ri_Users);
+            return await repository.SaveAsync(ri_Users);
         }
-        public RI_Users GetUserById(int id)
+
+        public async Task<RI_Users> GetUserByIdAsync(int id)
         {
-            return repository.GetUserById(id);
+            return await repository.GetUserByIdAsync(id);
         }
-        public void Delete(int id)
+
+        public async Task DeleteAsync(int id)
         {
-            repository.Delete(id);
+            await repository.DeleteAsync(id);
         }
+
+       
     }
 }
