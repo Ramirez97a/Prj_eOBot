@@ -235,8 +235,10 @@ namespace Prj_Infraestructure.Repository
         public async Task<Rl_Robot> SaveAsync(Rl_Robot ri_robot)
         {
             Rl_Robot ori_robot = null;
+
             try
             {
+               
                 using (MyContext ctx = new MyContext())
                 {
                     ctx.Configuration.LazyLoadingEnabled = false;
@@ -260,6 +262,7 @@ namespace Prj_Infraestructure.Repository
                             cmd.Parameters.Add("@StatusClient", SqlDbType.Int).Value = ri_robot.StatusClient;
                             cmd.Parameters.Add("@EmailNotificaciones", SqlDbType.VarChar, 100).Value = ri_robot.EmailNotificaciones;
                             cmd.Parameters.Add("@Token", SqlDbType.VarChar, 600).Value = ri_robot.Token;
+                            cmd.Parameters.Add("@DateSubscribe", SqlDbType.Date).Value = ri_robot.DateSubscribe;
 
                             cmd.CommandType = CommandType.StoredProcedure;
                             await cmd.ExecuteNonQueryAsync();
@@ -281,6 +284,7 @@ namespace Prj_Infraestructure.Repository
                             cmd.Parameters.Add("@StatusClient", SqlDbType.Int).Value = ri_robot.StatusClient;
                             cmd.Parameters.Add("@EmailNotificaciones", SqlDbType.VarChar, 100).Value = ri_robot.EmailNotificaciones;
                             cmd.Parameters.Add("@Token", SqlDbType.VarChar, 600).Value = ri_robot.Token;
+                            cmd.Parameters.Add("@DateSubscribe", SqlDbType.Date).Value = ri_robot.DateSubscribe;
                             cmd.CommandType = CommandType.StoredProcedure;
                             await cmd.ExecuteNonQueryAsync();
                         }
@@ -300,7 +304,69 @@ namespace Prj_Infraestructure.Repository
             }
         }
 
-     
+
+        public async Task<IEnumerable<Rl_Robot>> GetClientDataByDateSubscribeAsync()
+        {
+            List<Rl_Robot> olista = new List<Rl_Robot>();
+            try
+            {
+                using (MyContext ctx = new MyContext())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    var connectionString = ctx.Database.Connection.ConnectionString;
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        await connection.OpenAsync();
+
+                        using (SqlCommand cmd = new SqlCommand("GetRlRobotDataByDateSubscribe", connection))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                            {
+                                while (await reader.ReadAsync())
+                                {
+                                    Rl_Robot oRl_Robot = new Rl_Robot();
+
+                                    oRl_Robot.ID = (Guid)reader["ID"];
+                                    oRl_Robot.UserWeb = reader["UserWeb"].ToString();
+                                    oRl_Robot.PasswordWeb = reader["PasswordWeb"].ToString();
+                                    oRl_Robot.UserName = reader["UserName"].ToString();
+                                    oRl_Robot.Password = reader["Password"].ToString();
+                                    oRl_Robot.LoginUrl = reader["LoginUrl"].ToString();
+                                    oRl_Robot.NodeName = reader["NodeName"].ToString();
+                                    oRl_Robot.TimeGenReports = (DateTime)reader["TimeGenReports"];
+                                    oRl_Robot.TimeDownReports = (DateTime)reader["TimeDownReports"];
+                                    oRl_Robot.Timespan = (int)reader["Timespan"];
+                                    oRl_Robot.LocalFolder = reader["LocalFolder"].ToString();
+                                    oRl_Robot.Message = reader["Message"].ToString();
+                                    oRl_Robot.StatusClient = reader["StatusClient"] != DBNull.Value ? (int)reader["StatusClient"] : (int?)null;
+                                    oRl_Robot.CodError = reader["CodError"] != DBNull.Value ? (int)reader["CodError"] : (int?)null;
+                                    oRl_Robot.CodRequest = reader["CodRequest"] != DBNull.Value ? (int)reader["CodRequest"] : (int?)null;
+                                    oRl_Robot.DateSubscribe = reader["DateSubscribe"] != DBNull.Value ? (DateTime?)reader["DateSubscribe"] : null;
+                                    oRl_Robot.FechaHoraUltimoReporte = reader["FechaHoraUltimoReporte"] != DBNull.Value ? (DateTime?)reader["FechaHoraUltimoReporte"] : null;
+                                    oRl_Robot.EmailNotificaciones = reader["EmailNotificaciones"].ToString();
+                                    oRl_Robot.Token = reader["Token"].ToString();
+                                    olista.Add(oRl_Robot);
+                                }
+                            }
+                        }
+                    }
+                }
+                return olista;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                string mensaje = "Error en la base de datos: \n" + dbEx.Message;
+                throw new Exception(mensaje);
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "Error en el servidor: \n" + ex.Message;
+                throw;
+            }
+        }
 
 
     }

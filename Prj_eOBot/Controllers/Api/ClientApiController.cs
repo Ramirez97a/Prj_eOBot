@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Services.Description;
 
 namespace Prj_eOBot.Controllers.Api
 {
@@ -35,8 +36,59 @@ namespace Prj_eOBot.Controllers.Api
                 else
                 {
                     response.StatusCode = (int)HttpStatusCode.OK;
-                    response.Message = "Usuario encontrado";                   
+                    response.Message = "Usuario encontrado";
+                    response.Data = ri_robot;
                 }
+
+                return Json(response);
+            }
+            catch (Exception e)
+            {
+
+                response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                response.Message = e.Message;
+
+                return Json(response);
+               
+            }
+        }
+
+        [HttpGet]
+        [Route("GetAllClient")]
+        public async Task<IHttpActionResult> getAll(string usermail, string userPassword)
+        {
+            ResponseModel response = new ResponseModel();
+            try
+            {
+                IServiceClient service = new ServiceClient();
+                IServicioUsers serviceUsers = new ServiceUsers();
+
+                RI_Users Users = await serviceUsers.Login(usermail, userPassword);
+
+                if (Users == null)
+                {
+                    response.StatusCode = (int)HttpStatusCode.NotFound;
+                    response.Message = "Credenciales erroneas";
+
+                }
+                else 
+                {
+                    IEnumerable<Rl_Robot> ri_robot = await service.GetRobotClientAsync();
+
+
+                    if (ri_robot == null || !ri_robot.Any())
+                    {
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                        response.Message = "Erro de data ";
+
+                    }
+                    else
+                    {
+                        response.StatusCode = (int)HttpStatusCode.OK;
+                        response.Message = "Data encontrado";
+                        response.Data = ri_robot;
+                    }
+                }              
 
                 return Json(response);
             }
@@ -49,29 +101,47 @@ namespace Prj_eOBot.Controllers.Api
                 return Json(response);
             }
         }
-
+        
         [HttpGet]
-        [Route("GetAllClient")]
-        public async Task<IHttpActionResult> getAll()
+        [Route("GetByDateSubscribe")]
+        public async Task<IHttpActionResult> GetClientDataByDateSubscribeAsync(string usermail, string userPassword)
         {
             ResponseModel response = new ResponseModel();
             try
             {
-
                 IServiceClient service = new ServiceClient();
+                IServicioUsers serviceUsers = new ServiceUsers();
 
-                IEnumerable<Rl_Robot> ri_robot = await service.GetRobotClientAsync();
+                RI_Users Users = await serviceUsers.Login(usermail, userPassword);
 
-                if (ri_robot == null || !ri_robot.Any())
+                if (Users == null)
                 {
                     response.StatusCode = (int)HttpStatusCode.NotFound;
-                    response.Message = "Usuario no encontrado verifique el id ";
+                    response.Message = "Credenciales erroneas";
 
+                }
+                else if(Users.Role == 1)
+                {
+                    IEnumerable<Rl_Robot> ri_robot = await service.GetClientDataByDateSubscribeAsync();
+
+
+                    if (ri_robot == null || !ri_robot.Any())
+                    {
+                        response.StatusCode = (int)HttpStatusCode.NotFound;
+                        response.Message = "Erro de data ";
+
+                    }
+                    else
+                    {
+                        response.StatusCode = (int)HttpStatusCode.OK;
+                        response.Message = "Data encontrado";
+                        response.Data = ri_robot;
+                    }
                 }
                 else
                 {
-                    response.StatusCode = (int)HttpStatusCode.OK;
-                    response.Message = "Usuario encontrado";                   
+                    response.StatusCode = (int)HttpStatusCode.NotFound;
+                    response.Message = "Usuario no autorizado";
                 }
 
                 return Json(response);
@@ -104,7 +174,7 @@ namespace Prj_eOBot.Controllers.Api
                     response.StatusCode = (int)HttpStatusCode.NotFound;
                     response.Message = "Credenciales erroneas";
 
-                }
+                }   
                 else
                 {
                     Rl_Robot ri_robot = await service.GetRobotClientByEmaildAsync(Users.Email);

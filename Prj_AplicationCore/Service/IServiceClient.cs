@@ -9,7 +9,8 @@ namespace Prj_AplicationCore.Service
 {
     public interface IServiceClient
     {
-        Task<IEnumerable<Rl_Robot>> GetRobotClientAsync();
+        Task<IEnumerable<Rl_Robot>> GetRobotClientAsync(); 
+        Task<IEnumerable<Rl_Robot>> GetClientDataByDateSubscribeAsync();
         Task<Rl_Robot> SaveAsync(Rl_Robot ri_Robot);
         Task<Rl_Robot> GetRobotClientByIdAsync(Guid? id);
         Task<Rl_Robot> GetRobotClientByEmaildAsync(string email);

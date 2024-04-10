@@ -25,6 +25,10 @@ namespace Prj_AplicationCore.Service
         {
             return await repository.GetClientAsync();
         }
+        public async Task<IEnumerable<Rl_Robot>> GetClientDataByDateSubscribeAsync()
+        {
+            return await repository.GetClientDataByDateSubscribeAsync();
+        }
 
         public async Task<Rl_Robot> GetRobotClientByIdAsync(Guid? id)
         {

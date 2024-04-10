@@ -29,8 +29,21 @@ namespace Prj_eOBot.Controllers
             try
             {
                 IServiceClient _servicioClient = new ServiceClient();
-                olista = await _servicioClient.GetRobotClientAsync();
+
+                RI_Users user = (RI_Users)Session["User"];
+
+                if (user.Role == 1)
+                {
+                    olista = await _servicioClient.GetRobotClientAsync();
+                   
+                }
+                else if (user.Role == 2)
+                {
+                    var robot = await _servicioClient.GetRobotClientByEmaildAsync(user.Email);
+                    olista = new List<Rl_Robot> { robot };
+                }
                 return View(olista);
+
             }
             catch (Exception)
             {
@@ -60,9 +73,9 @@ namespace Prj_eOBot.Controllers
             IServiceClient _servicioClient = new ServiceClient();
 
             try
-            {
-             
-               await _servicioClient.SaveAsync(ri_robot);
+            {          
+
+                await _servicioClient.SaveAsync(ri_robot);
                 return Json(new { success = true, message = "Registro guardado con éxito" });
             }
             catch (Exception ex)
