@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_eobot\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|solutionrelative:prj_eobot\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FE63C772-67AD-4480-BC18-8A6D1C8B89F1}|Prj_Infraestructure\\Prj_Infraestructure.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_infraestructure\\repository\\irepositoryclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FE63C772-67AD-4480-BC18-8A6D1C8B89F1}|Prj_Infraestructure\\Prj_Infraestructure.csproj|solutionrelative:prj_infraestructure\\repository\\irepositoryclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_eobot\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|solutionrelative:prj_eobot\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_eobot\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|solutionrelative:prj_eobot\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_eobot\\scripts\\login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|solutionrelative:prj_eobot\\scripts\\login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|c:\\users\\ricar\\onedrive\\documentos\\sinertica\\prj_eobot\\prj_eobot\\controllers\\api\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B730EA08-8786-4FD4-85CB-A05B0C5BB525}|Prj_eOBot\\Prj_eOBot.csproj|solutionrelative:prj_eobot\\controllers\\api\\clientapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,85 +9,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IRepositoryClient.cs",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_Infraestructure\\Repository\\IRepositoryClient.cs",
-              "RelativeDocumentMoniker": "Prj_Infraestructure\\Repository\\IRepositoryClient.cs",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_Infraestructure\\Repository\\IRepositoryClient.cs",
-              "RelativeToolTip": "Prj_Infraestructure\\Repository\\IRepositoryClient.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T15:01:20.922Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "Prj_eOBot\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "Prj_eOBot\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-10T14:57:08.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Prj_eOBot\\Controllers\\UsersController.cs",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Prj_eOBot\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEgAAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T15:17:58.002Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Login.js",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Scripts\\Login.js",
-              "RelativeDocumentMoniker": "Prj_eOBot\\Scripts\\Login.js",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Scripts\\Login.js",
-              "RelativeToolTip": "Prj_eOBot\\Scripts\\Login.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-10T14:45:54.85Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "Prj_eOBot\\Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "Prj_eOBot\\Controllers\\ClienteController.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwCkAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T15:17:58.011Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ClientApiController.cs",
-              "DocumentMoniker": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\Api\\ClientApiController.cs",
-              "RelativeDocumentMoniker": "Prj_eOBot\\Controllers\\Api\\ClientApiController.cs",
-              "ToolTip": "C:\\Users\\ricar\\OneDrive\\Documentos\\Sinertica\\Prj_eOBot\\Prj_eOBot\\Controllers\\Api\\ClientApiController.cs",
-              "RelativeToolTip": "Prj_eOBot\\Controllers\\Api\\ClientApiController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAowM8AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-09T15:02:20.557Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
