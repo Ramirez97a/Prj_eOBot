@@ -48,13 +48,22 @@
                             <span class="text-danger"></span>
                         </div>
                     </div>
-                    <div class="form-group row" id="conteinerTematicaPadre">
+                    <div class="form-group row mb-2" id="conteinerTematicaPadre">
                         <label for="TematicaID" class="control-label col-md-2">Role</label>
                         <div class="col-md-10">
                             <select class="form-select" aria-label="Default select example" id="roleSelect">
                                 <option selected>Seleccione un role</option>
                                 <option value="1">Administrador</option>
-                                <option value="2">Usuario</option>                               
+                                <option value="2">Usuario General</option>
+                                <option value="3">Usuario Adm Cliente</option>
+                                <option value="4">Usuario Cliente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row" id="conteinerTematicaPadre">
+                        <label for="TematicaID" class="control-label col-md-2">Cliente</label>
+                        <div class="col-md-10">
+                            <select class="form-select" aria-label="Default select example" id="clientSelect">                                
                             </select>
                         </div>
                     </div>
@@ -92,23 +101,33 @@
              
             });
 
+            listarClientSelect();
+
             function guardarDatos() {              
                 var nombre = $('#nombre').val();
                 var apellidos = $('#apellidos').val();
                 var email = $('#email').val();
                 var username = $('#username').val();
                 var password = $('#password').val();
-                var role = $('#roleSelect').val();
-                var id = null;
+                var role = $('#roleSelect').val();                
+                var clientSelect = $('#clientSelect').val();           
+                var customerClient;
+
+                if (clientSelect == null) {
+                    customerClient = null;
+                }
+                else {
+                    customerClient = clientSelect;
+                }               
                 
-                var data = {
-                    ID: id,
+                var data = {                   
                     Name: nombre,
                     Surname: apellidos,
                     Email: email,
                     UserName: username,
                     Password: password,
-                    Role: role,                    
+                    Role: role,   
+                    CustomerID: customerClient
                 };
                
                 $.ajax({
@@ -131,6 +150,47 @@
                     }
                 });
             }
+
+            function listarClientSelect() {          
+
+                $.ajax({
+                    url: '/Cliente/ListClient', 
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) {
+
+                        if (response.Data != null) {
+                            console.log(response.message);
+                            console.log(response.Data);
+                            llenarClientSelect(response.Data);
+                        } else {                           
+                            console.error('Error: ' + response.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {                     
+                        console.error('Error de AJAX:', error);
+                    }
+                });
+            }
+
+            function llenarClientSelect(data) {
+                var clientSelect = $('#clientSelect');
+
+                clientSelect.empty(); 
+                clientSelect.append($('<option>', {
+                    value: '',
+                    text: 'Seleccione un cliente'
+                }));
+
+               
+                data.forEach(function (cliente) {
+                    clientSelect.append($('<option>', {
+                        value: cliente.ID,
+                        text: cliente.UserName
+                    }));
+                });
+            }
+
 
 
 

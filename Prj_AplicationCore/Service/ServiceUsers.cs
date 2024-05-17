@@ -36,6 +36,10 @@ namespace Prj_AplicationCore
         {
             return await repository.GetUserByIdAsync(id);
         }
+        public async Task<RI_Users> GetUserByCustomerAsync(Guid? customerID)
+        {
+            return await repository.GetUserByCustomerAsync(customerID);
+        }
 
         public async Task DeleteAsync(int id)
         {

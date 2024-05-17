@@ -37,6 +37,7 @@
     <EntitySetMapping Name="RI_Users">
       <EntityTypeMapping TypeName="sinertica_RLRobotModel.RI_Users">
         <MappingFragment StoreEntitySet="RI_Users">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />

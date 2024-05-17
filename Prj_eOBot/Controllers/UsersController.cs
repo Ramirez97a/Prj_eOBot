@@ -57,27 +57,51 @@ namespace Prj_eOBot.Controllers
 
         public async Task<ActionResult> list()
         {
+            RI_Users user = (RI_Users)Session["User"];
+
             IEnumerable<RI_Users> olista = null;
             try
             {
                 IServicioUsers _servicioUsers = new ServiceUsers();
-                olista = await _servicioUsers.GetUsersAsync();
+
+                if (user.Role == 1 || user.Role == 2)
+                {
+                    olista = await _servicioUsers.GetUsersAsync();
+                }
+                else
+                {
+                    var userResult = await _servicioUsers.GetUserByCustomerAsync(user.CustomerID);
+                    olista = new List<RI_Users> { userResult };
+                }
+
+                ViewBag.Role = user.Role;
                 return View(olista);
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
+
+
         public async Task<JsonResult> Save(RI_Users ri_users)
         {
             IServicioUsers _servicioUsers = new ServiceUsers();      
 
             try
             {
-                 await _servicioUsers.SaveAsync(ri_users);
-                return Json(new { success = true, message = "Registro guardado con éxito" });
+                RI_Users user = (RI_Users)Session["User"];
+               
+                if (user.Role == 1 || user.Role == 3)
+                {
+                    
+                     await _servicioUsers.SaveAsync(ri_users);
+                    return Json(new { success = true, message = "Registro guardado con éxito" });
+                }
+                else
+                {
+                    return Json(new { success = false, message = "No tienes permisos para realizar esta acción" });
+                }
             }
             catch (Exception ex)
             {

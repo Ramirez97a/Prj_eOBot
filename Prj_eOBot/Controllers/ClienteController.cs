@@ -19,8 +19,11 @@ namespace Prj_eOBot.Controllers
         {
             return RedirectToAction("List");
         }
-        public ActionResult Create() 
-        { 
+        public ActionResult Create()
+        {
+            RI_Users user = (RI_Users)Session["User"];
+
+            ViewBag.Role = user.Role;
             return View();
         }
         public async Task<ActionResult> List()
@@ -32,16 +35,21 @@ namespace Prj_eOBot.Controllers
 
                 RI_Users user = (RI_Users)Session["User"];
 
-                if (user.Role == 1)
+                if (user.Role == 1 || user.Role == 2)
                 {
+                    // *Usuario Administrador General
+                    // Usuario General  
                     olista = await _servicioClient.GetRobotClientAsync();
-                   
                 }
-                else if (user.Role == 2)
+                else if (user.Role == 3 || user.Role == 4)
                 {
-                    var robot = await _servicioClient.GetRobotClientByEmaildAsync(user.Email);
+                    // Usuario Administrador Cliente
+                    // Usuario Cliente
+                    var robot = await _servicioClient.GetRobotClientByIdAsync(user.CustomerID);
                     olista = new List<Rl_Robot> { robot };
                 }
+                ViewBag.Role = user.Role;
+
                 return View(olista);
 
             }
@@ -51,15 +59,57 @@ namespace Prj_eOBot.Controllers
                 throw;
             }
         }
+        public async Task<JsonResult> ListClient()
+        {            
+            try
+            {
+                IServiceClient _servicioClient = new ServiceClient();
+
+                RI_Users user = (RI_Users)Session["User"];
+
+                IEnumerable<Rl_Robot> olista = null;
+
+                if (user.Role == 1 || user.Role ==2)
+                {
+                    // *Usuario Administrador General
+                    // Usuario General  
+                    olista = await _servicioClient.GetRobotClientAsync();
+                }
+                else if (user.Role == 3 || user.Role == 4)
+                {
+                    // Usuario Administrador Cliente
+                    // Usuario Cliente
+                    var robot = await _servicioClient.GetRobotClientByIdAsync(user.CustomerID);
+                    olista = new List<Rl_Robot> { robot };
+                }
+             
+                var jsonData = new
+                {
+                    success = true,
+                    message = "Data encontrada",                
+                    Data = olista 
+                };
+
+                return Json(jsonData, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         public async Task<ActionResult> Edit(Guid? id)
         {
             try
             {
                 IServiceClient _servicioClient = new ServiceClient();
+                RI_Users user = (RI_Users)Session["User"];
+                Rl_Robot ri_robot = null;
+                if (user.Role == 1)
+                {
+                     ri_robot = await _servicioClient.GetRobotClientByIdAsync(id);
+                }               
 
-                Rl_Robot ri_robot =await _servicioClient.GetRobotClientByIdAsync(id);
-               
-                // Envía una lista que contenga solo el usuario a la vista
+                ViewBag.Role = user.Role;
                 return View(new List<Rl_Robot> { ri_robot });
             }
             catch (Exception ex)

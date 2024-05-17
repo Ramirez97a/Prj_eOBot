@@ -43,6 +43,7 @@
     <Property Name="Password" Type="varchar" MaxLength="50" />
     <Property Name="Role" Type="int" />
     <Property Name="Status" Type="int" />
+    <Property Name="CustomerID" Type="uniqueidentifier" />
   </EntityType>
   <Association Name="FK_RI_Users_RI_Users">
     <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />

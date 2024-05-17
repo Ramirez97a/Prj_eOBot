@@ -1,5 +1,7 @@
 ﻿
-@{ var userId = TempData["UserId"] as int?; }
+@{
+    int role = ViewBag.Role;
+}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -164,13 +166,24 @@
                             </div>
                         </a>
                         <ul class="collapse submenu list-unstyled" id="components" data-bs-parent="#accordionExample">
-                            <li>
-                                <a href="@Url.Action("Index", "Users")">Usuarios</a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Index", "Cliente")"> Clientes  </a>
-                            </li>
-                            
+                            @if (role == 1 || role == 2)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Users")">Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Index", "Cliente")"> Clientes  </a>
+                                </li>
+                            }
+                            else if (role == 3 || role == 4)
+                            {
+                                <li>
+                                    <a href="@Url.Action("Index", "Users")">Usuarios</a>
+                                </li>
+                            }
+
+
+
                         </ul>
                     </li>
 

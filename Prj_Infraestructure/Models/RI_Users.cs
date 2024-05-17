@@ -14,7 +14,7 @@ namespace Prj_Infraestructure.Models
     
     public partial class RI_Users
     {
-        public int? ID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
@@ -22,6 +22,7 @@ namespace Prj_Infraestructure.Models
         public string Password { get; set; }
         public Nullable<int> Role { get; set; }
         public Nullable<int> Status { get; set; }
+        public Nullable<System.Guid> CustomerID { get; set; }
     
         public virtual RI_Role RI_Role { get; set; }
     }

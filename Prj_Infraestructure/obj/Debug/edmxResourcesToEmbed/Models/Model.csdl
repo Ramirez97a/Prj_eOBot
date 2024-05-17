@@ -45,6 +45,7 @@
     <Property Name="Role" Type="Int32" />
     <Property Name="Status" Type="Int32" />
     <NavigationProperty Name="RI_Role" Relationship="Self.FK_RI_Users_RI_Users" FromRole="RI_Users" ToRole="RI_Role" />
+    <Property Name="CustomerID" Type="Guid" />
   </EntityType>
   <Association Name="FK_RI_Users_RI_Users">
     <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />

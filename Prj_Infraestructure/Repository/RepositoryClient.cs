@@ -304,7 +304,6 @@ namespace Prj_Infraestructure.Repository
             }
         }
 
-
         public async Task<IEnumerable<Rl_Robot>> GetClientDataByDateSubscribeAsync()
         {
             List<Rl_Robot> olista = new List<Rl_Robot>();

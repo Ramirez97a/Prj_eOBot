@@ -40,7 +40,7 @@ namespace Prj_eOBot.Controllers
                     response.Message = "Usuario autorizado";
 
                     Session["User"] = Users;
-                   
+                    ViewBag.Role = Users.Role;
                 }
 
                 return Json(response);

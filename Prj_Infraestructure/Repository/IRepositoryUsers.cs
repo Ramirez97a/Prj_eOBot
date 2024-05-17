@@ -14,6 +14,7 @@ namespace prj_Infraestructure.Repositorys
         Task<IEnumerable<RI_Users>> GetUsersAsync();
         Task<RI_Users> SaveAsync(RI_Users ri_Users);
         Task<RI_Users> GetUserByIdAsync(int? id);
+        Task<RI_Users> GetUserByCustomerAsync(Guid? customerID);
         Task DeleteAsync(int id);
 
     }

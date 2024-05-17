@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="sinertica_RLRobotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="sinertica_RLRobotModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Rl_Robot">
           <Key>
             <PropertyRef Name="ID" />
@@ -48,6 +48,7 @@
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="Role" Type="int" />
           <Property Name="Status" Type="int" />
+          <Property Name="CustomerID" Type="uniqueidentifier" />
         </EntityType>
         <Association Name="FK_RI_Users_RI_Users">
           <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />
@@ -70,8 +71,7 @@
             <End Role="RI_Users" EntitySet="RI_Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="sinertica_RLRobotModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -120,6 +120,7 @@
           <Property Name="Role" Type="Int32" />
           <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="RI_Role" Relationship="Self.FK_RI_Users_RI_Users" FromRole="RI_Users" ToRole="RI_Role" />
+          <Property Name="CustomerID" Type="Guid" />
         </EntityType>
         <Association Name="FK_RI_Users_RI_Users">
           <End Role="RI_Role" Type="Self.RI_Role" Multiplicity="0..1" />
@@ -184,6 +185,7 @@
           <EntitySetMapping Name="RI_Users">
             <EntityTypeMapping TypeName="sinertica_RLRobotModel.RI_Users">
               <MappingFragment StoreEntitySet="RI_Users">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />

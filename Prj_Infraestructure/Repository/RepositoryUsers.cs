@@ -45,6 +45,7 @@ namespace prj_Infraestructure.Repositorys
                                     oRI_Users.Password = reader["Password"].ToString();
                                     oRI_Users.Role = reader["Role"] != DBNull.Value ? (int)reader["Role"] : (int?)null;
                                     oRI_Users.Status = reader["Status"] != DBNull.Value ? (int)reader["Status"] : (int?)null;
+                                    oRI_Users.CustomerID = reader["CustomerID"] != DBNull.Value ? (Guid)reader["CustomerID"] : (Guid?)null;
 
                                     olista.Add(oRI_Users);
                                 }
@@ -102,7 +103,9 @@ namespace prj_Infraestructure.Repositorys
                                         UserName = reader["UserName"].ToString(),
                                         Password = reader["Password"].ToString(),
                                         Role = reader["Role"] != DBNull.Value ? Convert.ToInt32(reader["Role"]) : (int?)null,
-                                        Status = reader["Status"] != DBNull.Value ? Convert.ToInt32(reader["Status"]) : (int?)null
+                                        Status = reader["Status"] != DBNull.Value ? Convert.ToInt32(reader["Status"]) : (int?)null,
+                                        CustomerID = reader["CustomerID"] != DBNull.Value ? (Guid)reader["CustomerID"] : (Guid?)null
+
                                     };
                                 }
                             }
@@ -112,11 +115,11 @@ namespace prj_Infraestructure.Repositorys
 
                 return user;
             }
-            catch (SqlException sqlEx) when (sqlEx.Number == 4060) // Controlar error de conexión
+            catch (SqlException sqlEx) when (sqlEx.Number == 4060) 
             {
                 throw new Exception("Error de conexión a la base de datos. Por favor, inténtalo de nuevo más tarde.");
             }
-            catch (SqlException sqlEx) // Controlar otros errores de SQL
+            catch (SqlException sqlEx) 
             {
                 throw new Exception($"Error de SQL: {sqlEx.Message}");
             }
@@ -142,7 +145,7 @@ namespace prj_Infraestructure.Repositorys
                     {
                         await connection.OpenAsync();
 
-                        if (ori_Users == null)
+                        if (ori_Users.ID == 0 )
                         {
                             using (SqlCommand cmd = new SqlCommand("Sp_CreateUser", connection))
                             {
@@ -152,6 +155,7 @@ namespace prj_Infraestructure.Repositorys
                                 cmd.Parameters.Add("@UserName", SqlDbType.VarChar, 50).Value = ri_Users.UserName;
                                 cmd.Parameters.Add("@Password", SqlDbType.VarChar, 50).Value = ri_Users.Password;
                                 cmd.Parameters.Add("@Role", SqlDbType.Int).Value = ri_Users.Role;
+                                cmd.Parameters.Add("@CustomerID", SqlDbType.UniqueIdentifier).Value = ri_Users.CustomerID.HasValue ? (object)ri_Users.CustomerID.Value : DBNull.Value;
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 await cmd.ExecuteNonQueryAsync();
                             }
@@ -168,6 +172,7 @@ namespace prj_Infraestructure.Repositorys
                                 cmd.Parameters.Add("@Password", SqlDbType.VarChar, 50).Value = ri_Users.Password;
                                 cmd.Parameters.Add("@Role", SqlDbType.Int).Value = ri_Users.Role;
                                 cmd.Parameters.Add("@Status", SqlDbType.Int).Value = ri_Users.Status;
+                                cmd.Parameters.Add("@CustomerID", SqlDbType.UniqueIdentifier).Value = ri_Users.CustomerID;
                                 cmd.CommandType = CommandType.StoredProcedure;
                                 await cmd.ExecuteNonQueryAsync();
                             }
@@ -219,6 +224,59 @@ namespace prj_Infraestructure.Repositorys
                                     oRI_Users.Password = reader["Password"].ToString();
                                     oRI_Users.Role = reader["Role"] != DBNull.Value ? (int)reader["Role"] : (int?)null;
                                     oRI_Users.Status = reader["Status"] != DBNull.Value ? (int)reader["Status"] : (int?)null;
+                                    oRI_Users.CustomerID = reader["CustomerID"] != DBNull.Value ? (Guid)reader["CustomerID"] : (Guid?)null;
+
+                                }
+                            }
+                        }
+                    }
+                }
+                return oRI_Users;
+            }
+            catch (DbUpdateException dbEx)
+            {
+                string mensaje = "Error en la base de datos: " + dbEx.Message;
+                throw new Exception(mensaje);
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "Error al obtener el usuario: " + ex.Message;
+                throw new Exception(mensaje);
+            }
+        }
+        public async Task<RI_Users> GetUserByCustomerAsync(Guid? customerID)
+        {
+            RI_Users oRI_Users = new RI_Users();
+            try
+            {
+                using (MyContext ctx = new MyContext())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    var connectionString = ctx.Database.Connection.ConnectionString;
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        await connection.OpenAsync();
+
+                        using (SqlCommand cmd = new SqlCommand("Sp_GetUserByCustomerID", connection))
+                        {
+                            cmd.Parameters.Add("@CustomerID", SqlDbType.UniqueIdentifier).Value = customerID;
+                            cmd.CommandType = CommandType.StoredProcedure;
+
+                            using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                            {
+                                while (await reader.ReadAsync())
+                                {
+                                    oRI_Users.ID = Convert.ToInt32(reader["ID"]);
+                                    oRI_Users.Name = reader["Name"].ToString();
+                                    oRI_Users.Surname = reader["Surname"].ToString();
+                                    oRI_Users.Email = reader["Email"].ToString();
+                                    oRI_Users.UserName = reader["UserName"].ToString();
+                                    oRI_Users.Password = reader["Password"].ToString();
+                                    oRI_Users.Role = reader["Role"] != DBNull.Value ? (int)reader["Role"] : (int?)null;
+                                    oRI_Users.Status = reader["Status"] != DBNull.Value ? (int)reader["Status"] : (int?)null;
+                                    oRI_Users.CustomerID = reader["CustomerID"] != DBNull.Value ? (Guid)reader["CustomerID"] : (Guid?)null;
+
                                 }
                             }
                         }
